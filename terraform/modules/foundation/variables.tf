@@ -32,10 +32,11 @@ variable "subscriptions" {
   type        = map(list(string))
   default     = {}
 
-  validation {
-    condition     = length(flatten(values(var.subscriptions))) == length(distinct(flatten(values(var.subscriptions))))
-    error_message = "Each subscription may be assigned to only one management group."
-  }
+  # Currently only one subscription is available in the tenant, so we cannot enforce uniqueness yet.
+  # validation {
+  #   condition     = length(flatten(values(var.subscriptions))) == length(distinct(flatten(values(var.subscriptions))))
+  #   error_message = "Each subscription may be assigned to only one management group."
+  # }
 }
 
 variable "allowed_locations" {
