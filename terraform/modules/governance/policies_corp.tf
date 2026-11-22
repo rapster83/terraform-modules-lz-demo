@@ -12,10 +12,10 @@ locals {
 resource "azurerm_policy_set_definition" "no_public_endpoints" {
   count = var.stage == "regional_airfield" ? 1 : 0
 
-  name         = "airstrip-no-public-endpoints"
-  display_name = "No public endpoints"
-  policy_type  = "Custom"
-  #management_group_id = var.corp_management_group_id
+  name                = "airstrip-no-public-endpoints"
+  display_name        = "No public endpoints"
+  policy_type         = "Custom"
+  management_group_id = var.corp_management_group_id
 
   # Preserve the deployed parameter schema; the assignment below always uses Deny.
   parameters = jsonencode({
